@@ -50,7 +50,7 @@ else:
 # print(statement)
 
 # Print days until release
-target_date_str = "2023-05-12"
+target_date_str = "2023-07-21"
 target_date = datetime.datetime.strptime(target_date_str, "%Y-%m-%d").date()
 delta = target_date - today
 days_until = delta.days
@@ -76,10 +76,10 @@ with open('template.html', 'r') as file:
 with open('count.txt', 'r') as file:
   count = file.read()
 
-# Zelda
+# Release
 if int(count) == 0:
-  print('zelda')
-  filedata = filedata.replace('REPLACE_IMG', 'zelda.jpg')
+  print('release')
+  filedata = filedata.replace('REPLACE_IMG', 'pik.jpg')
   filedata = filedata.replace('TEXT', str(days_until))
 
 # Meeting
