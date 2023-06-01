@@ -20,32 +20,44 @@ with open('template.html', 'r') as file:
 with open('count.txt', 'r') as file:
   count = file.read()
 
+with open('release_count.txt', 'r') as file:
+  r_count = file.read()
+
 # Release
 if int(count) == 0:
-  print('release')
-  backgrounds = ['pik.jpg', 'armored_core.jpg', 'starfield.jpg', 'opp.jpeg']
-  random_index = random.randint(0,len(backgrounds)-1)
-
+  print('release', r_count)
   # Print days until release
   target_date_str = "2023-07-21"
   target_date = datetime.datetime.strptime(target_date_str, "%Y-%m-%d").date()
   delta = target_date - today
   days_until = delta.days
 
-  if "pik" in backgrounds[random_index]:
+  background = ''
+  if int(r_count) == 0:
+    background = 'pik.jpg'
     target_date_str = "2023-07-21"
-  if "armored_core" in backgrounds[random_index]:
+  elif int(r_count) == 1:
+    background = 'armored_core.jpg'
     target_date_str = "2023-08-25"
-  if "starfield" in backgrounds[random_index]:
+  elif int(r_count) == 2:
+    background = 'starfield.jpg'
     target_date_str = "2023-09-06"
-  if "oppenheimer" in backgrounds[random_index]:
+  elif int(r_count) == 3:
+    background = 'opp.jpeg'
     target_date_str = "2023-07-21"
+
+  with open('release_count.txt', 'w') as file:
+    if int(r_count) == 3:
+      r_count = 0
+    else:
+      r_count = int(r_count) + 1
+    file.write(str(r_count))
 
   target_date = datetime.datetime.strptime(target_date_str, "%Y-%m-%d").date()
   delta = target_date - today
   days_until = delta.days
   
-  filedata = filedata.replace('REPLACE_IMG', backgrounds[random_index])
+  filedata = filedata.replace('REPLACE_IMG', background)
   filedata = filedata.replace('TEXT', str(days_until))
 
 # Meeting
