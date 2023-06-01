@@ -23,8 +23,8 @@ with open('count.txt', 'r') as file:
 # Release
 if int(count) == 0:
   print('release')
-  release_backgrounds = ['pik.jpg', 'armored_core.jpg', 'starfield.jpg', 'opp.jpeg']
-  random_index = random.randint(0,len(release_backgrounds)-1)
+  backgrounds = ['pik.jpg', 'armored_core.jpg', 'starfield.jpg', 'opp.jpeg']
+  random_index = random.randint(0,len(backgrounds)-1)
 
   # Print days until release
   target_date_str = "2023-07-21"
