@@ -94,7 +94,8 @@ elif int(count) == 1:
       hours = delta.seconds // 3600
       minutes = (delta.seconds % 3600) // 60
       if first_event == '':
-        first_event = f'Meeting in {hours}h'
+        print("hours, minutes", hours, minutes)
+        first_event = f'Meeting in {hours}h {minutes}m'
 
   statement = ""
   if meeting_count > 0:
