@@ -103,7 +103,7 @@ elif int(count) == 1:
   else:
     statement = "No meetings"
   # TODO: make this more dynamic
-  filedata = filedata.replace('font-size: 6em;', 'font-size: 4em;')
+  filedata = filedata.replace('font-size: 6em;', 'font-size: 3em;')
   filedata = filedata.replace('REPLACE_IMG', backgrounds[random_index])
   filedata = filedata.replace('TEXT', statement)
 
