@@ -34,8 +34,8 @@ if int(count) == 0:
 
   background = ''
   if int(r_count) == 0:
-    background = 'pik.jpg'
-    target_date_str = "2023-07-21"
+    background = 'alan_wake_2.jpg'
+    target_date_str = "2023-10-17"
   elif int(r_count) == 1:
     background = 'armored_core.jpg'
     target_date_str = "2023-08-25"
@@ -43,11 +43,20 @@ if int(count) == 0:
     background = 'starfield.jpg'
     target_date_str = "2023-09-06"
   elif int(r_count) == 3:
-    background = 'opp.jpeg'
-    target_date_str = "2023-07-21"
+    background = 'hunger.jpg'
+    target_date_str = "2023-09-17"
+  elif int(r_count) == 4:
+    background = 'cow.jpg'
+    target_date_str = "2023-09-26"
+  elif int(r_count) == 5:
+    background = 'mario.jpg'
+    target_date_str = "2023-10-20"
+  elif int(r_count) == 6:
+    background = 'cities_skyline_2.jpg'
+    target_date_str = "2023-10-24"
 
   with open('release_count.txt', 'w') as file:
-    if int(r_count) == 3:
+    if int(r_count) == 6:
       r_count = 0
     else:
       r_count = int(r_count) + 1
@@ -93,9 +102,13 @@ elif int(count) == 1:
       delta = start_time - now
       hours = delta.seconds // 3600
       minutes = (delta.seconds % 3600) // 60
-      if first_event == '':
+      if first_event == '' and hours <= 3:
         print("hours, minutes", hours, minutes)
         first_event = f'Meeting in {hours}h {minutes}m'
+      if first_event == '' and hours > 3:
+        print("hours", hours)
+        first_event = f'Meeting in {hours}h'
+
 
   statement = ""
   if meeting_count > 0:
