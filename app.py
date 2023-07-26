@@ -104,7 +104,10 @@ elif int(count) == 1:
       minutes = (delta.seconds % 3600) // 60
       if first_event == '' and hours <= 3:
         print("hours, minutes", hours, minutes)
-        first_event = f'Meeting in {hours}h {minutes}m'
+        if hours == 0:
+          first_event = f'Meeting in {minutes} minutes'
+        else:
+          first_event = f'Meeting in {hours}h {minutes}m'
       if first_event == '' and hours > 3:
         print("hours", hours)
         first_event = f'Meeting in {hours}h'
