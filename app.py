@@ -14,18 +14,18 @@ backgrounds = ['2.jpg', '6.jpg', '7.jpg', '8.jpg', '19.jpg', '20.jpg', '22.jpg',
 random_index = random.randint(0,len(backgrounds)-1)
 
 # Load the HTML file
-with open('template.html', 'r') as file:
+with open('./data/template.html', 'r') as file:
   filedata = file.read()
 
-with open('count.txt', 'r') as file:
+with open('./data/count.txt', 'r') as file:
   count = file.read()
 
-with open('release_count.txt', 'r') as file:
+with open('./data/release_count.txt', 'r') as file:
   r_count = file.read()
 
 # Release
 if int(count) == 0:
-  print('release', r_count)
+  print("release =", r_count)
   # Print days until release
   target_date_str = "2023-07-21"
   target_date = datetime.datetime.strptime(target_date_str, "%Y-%m-%d").date()
@@ -37,25 +37,25 @@ if int(count) == 0:
     background = 'alan_wake_2.jpg'
     target_date_str = "2023-10-17"
   elif int(r_count) == 1:
-    background = 'armored_core.jpg'
-    target_date_str = "2023-08-25"
-  elif int(r_count) == 2:
-    background = 'starfield.jpg'
-    target_date_str = "2023-09-06"
-  elif int(r_count) == 3:
     background = 'hunger.jpg'
     target_date_str = "2023-09-17"
-  elif int(r_count) == 4:
+  elif int(r_count) == 2:
     background = 'cow.jpg'
     target_date_str = "2023-09-26"
-  elif int(r_count) == 5:
+  elif int(r_count) == 3:
     background = 'mario.jpg'
     target_date_str = "2023-10-20"
-  elif int(r_count) == 6:
+  elif int(r_count) == 4:
     background = 'cities_skyline_2.jpg'
     target_date_str = "2023-10-24"
+  elif int(r_count) == 5:
+    background = 'alien.webp'
+    target_date_str = "2023-09-16" # 10/7?
+  elif int(r_count) == 6:
+    background = 'plane.jpg'
+    target_date_str = "2023-09-22"
 
-  with open('release_count.txt', 'w') as file:
+  with open('./data/release_count.txt', 'w') as file:
     if int(r_count) == 6:
       r_count = 0
     else:
@@ -65,6 +65,8 @@ if int(count) == 0:
   target_date = datetime.datetime.strptime(target_date_str, "%Y-%m-%d").date()
   delta = target_date - today
   days_until = delta.days
+  print("background", background)
+  print(days_until, "days")
   
   filedata = filedata.replace('REPLACE_IMG', background)
   filedata = filedata.replace('TEXT', str(days_until))
@@ -119,6 +121,7 @@ elif int(count) == 1:
   else:
     statement = "No meetings"
   # TODO: make this more dynamic
+  print("background", backgrounds[random_index])
   filedata = filedata.replace('font-size: 6em;', 'font-size: 3em;')
   filedata = filedata.replace('REPLACE_IMG', backgrounds[random_index])
   filedata = filedata.replace('TEXT', statement)
@@ -130,16 +133,17 @@ elif int(count) == 2:
   hour = now.strftime("%-I")
   minute = now.strftime("%M")
   am_pm = now.strftime("%p").lower()
-  # print("{}:{} {}".format(hour, minute, am_pm))
+  print("{}:{} {}".format(hour, minute, am_pm))
+  print("background", backgrounds[random_index])
   filedata = filedata.replace('REPLACE_IMG', backgrounds[random_index])
   filedata = filedata.replace('TEXT', "{}:{} {}".format(hour, minute, am_pm))
 
-with open('count.txt', 'w') as file:
+with open('./data/count.txt', 'w') as file:
   if int(count) == 2:
     count = 0
   else:
     count = int(count) + 1
   file.write(str(count))
 
-with open('index.html', 'w') as file:
+with open('./data/index.html', 'w') as file:
   file.write(filedata)

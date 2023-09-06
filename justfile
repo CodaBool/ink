@@ -1,14 +1,14 @@
 build:
-	docker build -t calendar:latest .
+	docker build -t calendar .
 
 run: build
 	docker run \
-	  -v /mnt/d/Code/calendar/index.html:/index.html \
-	  -v /mnt/d/Code/calendar/count.txt:/count.txt \
-	  -v /mnt/d/Code/calendar/release_count.txt:/release_count.txt \
-	  -v /mnt/d/Code/calendar/template.html:/template.html \
+	  -v ./data:/data \
+		-v ./img:/img \
 		--rm \
-		calendar:latest
+		--name calendar \
+		calendar
 
 clean:
+	docker stop calendar
 	docker rm calendar
