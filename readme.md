@@ -4,23 +4,28 @@
 - set the browser resolution to 800px by 480px
 
 # Install
-- cron 
+## cron 
+
 ```
 */15 * * * * cd /home/codabool/ink/ && cron_script.sh
 0 * * * * cd /home/codabool/ink && git pull
 ```
 
 
-- install firefox
+## install firefox
+
 `sudo apt install snapd`
 `sudo snap install firefox`
 
-- ssh server
+## ssh server
+
 `sudo apt install openssh-server`
 
 `sudo systemctl enable ssh && sudo systemctl start ssh`
 
-- ink
+## ink
+
+[guide](https://core-electronics.com.au/guides/raspberry-pi/colour-e-ink-display-raspberry-pi/)
 
 `sudo apt-get install python3-smbus i2c-tools`
 
