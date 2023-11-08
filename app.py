@@ -34,29 +34,26 @@ if int(count) == 0:
 
   background = ''
   if int(r_count) == 0:
-    background = 'alan_wake_2.jpg'
-    target_date_str = "2023-10-17"
+    background = 'dune.png'
+    target_date_str = "2024-03-15"
   elif int(r_count) == 1:
-    background = 'hunger.jpg'
-    target_date_str = "2023-09-17"
+    background = 'romulus.png'
+    target_date_str = "2024-08-16"
   elif int(r_count) == 2:
-    background = 'cow.jpg'
-    target_date_str = "2023-09-26"
+    background = 'joker.png'
+    target_date_str = "2024-10-04"
   elif int(r_count) == 3:
-    background = 'mario.jpg'
-    target_date_str = "2023-10-20"
+    background = 'prince.png'
+    target_date_str = "2024-01-18"
   elif int(r_count) == 4:
-    background = 'cities_skyline_2.jpg'
-    target_date_str = "2023-10-24"
+    background = 'dark_forces.png'
+    target_date_str = "2024-02-28"
   elif int(r_count) == 5:
-    background = 'alien.webp'
-    target_date_str = "2023-09-16" # 10/7?
-  elif int(r_count) == 6:
     background = 'plane.jpg'
-    target_date_str = "2023-09-22"
+    target_date_str = "2024-10-31"
 
   with open('./data/release_count.txt', 'w') as file:
-    if int(r_count) == 6:
+    if int(r_count) == 5:
       r_count = 0
     else:
       r_count = int(r_count) + 1
@@ -138,8 +135,13 @@ elif int(count) == 2:
   filedata = filedata.replace('REPLACE_IMG', backgrounds[random_index])
   filedata = filedata.replace('TEXT', "{}:{} {}".format(hour, minute, am_pm))
 
+elif int(count) == 3:
+  print('bun')
+  filedata = filedata.replace('REPLACE_IMG', "cow.jpg")
+  filedata = filedata.replace('TEXT', "I ❤️ Sierra")
+
 with open('./data/count.txt', 'w') as file:
-  if int(count) == 2:
+  if int(count) == 3:
     count = 0
   else:
     count = int(count) + 1

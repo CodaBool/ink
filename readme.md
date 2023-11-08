@@ -34,3 +34,8 @@ Menu -> Preferences -> Raspberry Pi Configuration, then under the â€˜Interfacesâ
 `i2cdetect -y 1`
 
 if you get a file issue. You might be necessary to reboot `sudo reboot`
+
+
+# TODO BUG
+
+if the release_count is outside of what should be limited it would only increment on release
